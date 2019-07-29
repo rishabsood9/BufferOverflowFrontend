@@ -1,0 +1,27 @@
+
+<h1 style="text-align: center"><b>WANT TO DELETE THIS ANSWER ... .. ..?</b></h1><br><br><br><br>
+<form #form="ngForm"  autocomplete="off">
+         
+        
+    <div class="form-group">
+       
+        <input style="
+        width: 1000px; height: 100px;margin-left:8%;
+        margin-right:8%;display:block;margin-top:0%;margin-bottom:0% " 
+        name="answers"   #answers="ngModel" [(ngModel)]="Form.answers"   
+        placeholder="Type Your Answer....."  class="form-control" required>
+         </div>
+         <div class="validation-error" *ngIf ="answers.invalid && answers.touched ">
+                <p style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "
+                     *ngIf="answers.errors.required">ANSWER IS REQUIRED</p>
+                 -->
+
+         </div><div class="form-group">
+               
+            </div>
+        </form>
+
+        <button (click)="onYes()" style="margin: 5 ; width: 630px;">YES</button>
+        <button (click)="onNo()" style="margin: 5 ; width: 630px;">NO</button>

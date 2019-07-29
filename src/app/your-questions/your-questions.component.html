@@ -1,0 +1,40 @@
+
+
+<h1 class="display-4 text-center"style="animation: cubic-bezier(0.075, 0.82, 0.165, 1);text-align: center;background-color:whitesmoke">YOUR QUESTION</h1>
+
+<li class="navbar-brand">
+    <a routerLink="/user" routerLinkActive="active-link">HOME</a>
+</li><br>
+
+
+<form class="form-inline my-2 my-lg-0">
+        <input style="width: 700px; height: 40px;margin-left:20%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " 
+        class="form-control mr-sm-2" type="search" placeholder="Search a Question" aria-label="Search"
+        [(ngModel)]="term" name="term">
+        
+        </form><br> <br> <br>
+
+        <table class="table table-hover">
+                        <tr>
+                          
+                          <td><b><h2>TITLE</h2></b></td>
+                          <td><b><h2> TOTAL ANSWERS</h2></b></td>
+                          <td><b><h2> TAGS</h2></b></td>
+
+                      </tr>
+                      
+                        <tr *ngFor="let q of list | filter:term| paginate: { itemsPerPage: 10, currentPage: p }">
+                                    
+                                    <td> <b><h4 routerLink = "/answer"
+                                      [queryParams] = "{Id: q.questionId }"> <b>{{q.Title}}</b>          </h4></b></td>    
+                                    <td> <h4 >  {{q.NumberOfAnswers}} </h4></td> 
+                                    <td><h4>{{q.tags}}</h4><td>
+                                    <td><button  routerLink = "/questionedit"
+                                        [queryParams] = "{Id: q.questionId }">EDIT</button></td>
+                                    <td><button  routerLink = "/questionDelete"
+                                      [queryParams] = "{Id: q.questionId }">DELETE</button></td>
+                                    </tr>
+                                    
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                  </table>

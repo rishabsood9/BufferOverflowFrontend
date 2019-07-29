@@ -1,0 +1,31 @@
+
+<h1 class="display-4 text-center"
+style="animation: cubic-bezier(0.075, 0.82, 0.165, 1);text-align: 
+center;background-color:whitesmoke">YOUR ANSWERS</h1>
+
+<li class="navbar-brand">
+    <a routerLink="/user" routerLinkActive="active-link">HOME</a>
+</li><br>
+
+
+
+<table class="table table-hover">
+        <tr>
+                <th>Answers </th>
+                <th>Question</th>
+                
+                
+        </tr>
+        <tr *ngFor="let ans of answerList | paginate: { itemsPerPage: 10, currentPage: p }">
+    
+    <td>{{ans.answers}}  </td>
+    <td>{{ans.Ques}}</td>
+    <td><button  routerLink = "/answeredit" [queryParams] = "{Id: ans.AnswerId }"  >EDIT</button></td>
+    <td><button routerLink = "/answerdelete" [queryParams] = "{Id: ans.AnswerId, qId:ans.QuestionId }">DELETE</button></td>
+    
+</tr>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table><br><br><br><br><br>
+
+

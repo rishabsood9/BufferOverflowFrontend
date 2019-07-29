@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Buffer Overflow</a>
+    
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="navbar-brand">
+            <a  routerLink="/question" routerLinkActive="active-link">ASK A QUESTION</a>
+          </li>
+        <li class="navbar-brand">
+            <a routerLink="/getYourQuestions" routerLinkActive="active-link">YOUR QUESTIONS</a>
+        </li>
+        <li class="navbar-brand">
+            <a routerLink="/getYourAnswers" routerLinkActive="active-link" >YOUR ANSWERS</a>
+        </li>
+        
+       
+       
+      </ul>
+
+      
+     
+       
+    
+      
+    </div>
+     <div *ngIf="userDefined">
+    <img  src="data:image/jpeg;base64,{{user.ProfileImage}}" style="width: 100px;height: 100px;"> 
+    <h4 >{{user.FullName}}</h4>  
+  </div>
+    <li class="navbar-brand">
+        <a routerLink="" routerLinkActive="active-link" (click)="onClick()">LOGOUT</a>
+    </li>
+  </nav>
+  
+
+  
+ 
+
+  
+
+
+
+  <form class="form-inline my-2 my-lg-0">
+      <input style="width: 700px; height: 40px;margin-left:20%;
+      margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " 
+      class="form-control mr-sm-2" type="search" placeholder="Search a Question" aria-label="Search"
+      [(ngModel)]="term" name="term">
+      
+      </form><br> <br> <br>
+<table class="table table-hover">
+  <tr>
+    <td><b><h2>AKSED BY</h2></b></td>
+    <td><b><h2>TITLE</h2></b></td>
+    <td><b><h2> TAGS</h2></b></td>
+    <td><b><h2> TOTAL ANSWERS</h2></b></td>
+</tr>
+
+  <tr *ngFor="let q of list | filter:term| paginate: { itemsPerPage: 10, currentPage: p }">
+              <td> <h4 >{{q.username}}</h4></td>
+              <td> <b><h4 routerLink = "/answer"
+                [queryParams] = "{Id: q.questionId , qQ: q.Title}"> <b>{{q.Title}}</b>          </h4></b></td>   
+                <td><h4>{{q.tags}}</h4></td> 
+              <td> <h4 >  {{q.NumberOfAnswers}} </h4></td> 
+              <img  src="data:image/jpeg;base64,{{q.QuestionImage}}" style="width: 100px;height: 100px;"> 
+                                      
+              </tr>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </table>

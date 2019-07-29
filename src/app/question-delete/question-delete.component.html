@@ -1,0 +1,26 @@
+
+<h1 >Want to delete this Question?</h1>
+<form #form="ngForm"  autocomplete="off">
+
+<div class="form-group">
+    <label style="
+    width: 500px; height: 40px;margin-left:30%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', 
+        Times, serif ; font-size: 25px"><b>Title</b></label>
+    <input style="
+    width: 500px; height: 40px;margin-left:30%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "
+         name="Title"   #Title="ngModel" [(ngModel)]="Form.Title"    
+          class="form-control" required>
+     </div>
+     <div class="validation-error" *ngIf ="Title.invalid && Title.touched ">
+
+            <p style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="Title.errors.required">TITLE IS REQUIRED</p>
+            
+
+     </div></form>
+
+     <button (click)="onYes()" style="margin: 5 ; width: 630px;">YES</button>
+     <button (click)="onNo()" style="margin: 5 ; width: 630px;">NO</button>

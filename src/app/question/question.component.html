@@ -1,0 +1,110 @@
+
+<h1 class="display-4 text-center"style="animation: cubic-bezier(0.075, 0.82, 0.165, 1);text-align: center;background-color:whitesmoke">ADD A QUESTION</h1>
+
+<li class="navbar-brand">
+    <a routerLink="/user" routerLinkActive="active-link">HOME</a>
+</li><br>
+
+
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+         
+        
+    <div class="form-group">
+        <label style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', 
+            Times, serif ; font-size: 25px"><b>Title</b></label>
+        <input style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "
+             name="Title"   #Title="ngModel" [(ngModel)]="service.formQuestionData.Title"     class="form-control" required>
+         </div>
+         <div class="validation-error" *ngIf ="Title.invalid && Title.touched ">
+
+                <p style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="Title.errors.required">TITLE IS REQUIRED</p>
+                
+
+         </div>
+
+
+
+
+         <div class="form-group">
+            <label style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', 
+                Times, serif ; font-size: 25px"><b>Description</b></label>
+            <input style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " name="Description"   #Description="ngModel" [(ngModel)]="service.formQuestionData.Description"     class="form-control" required>
+             </div>
+             <div class="validation-error" *ngIf ="Description.invalid && Description.touched ">
+
+                    <p style="
+                    width: 500px; height: 40px;margin-left:30%;
+                        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="Description.errors.required">DESCRIPTION IS REQUIRED</p>
+                    
+    
+             </div>
+
+
+
+             <div class="form-group">
+        <label style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', 
+            Times, serif ; font-size: 25px"><b>Tags</b></label>
+        <input style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " name="tags"   #tags="ngModel" [(ngModel)]="service.formQuestionData.tags"     class="form-control" required>
+         </div>
+
+         <div class="validation-error" *ngIf ="tags.invalid && tags.touched ">
+
+                <p style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="tags.errors.required">TAG IS REQUIRED</p>
+                
+
+         </div>
+
+         
+
+
+         <div class="form-group">
+            <label style="
+                        width: 500px; height: 40px;margin-left:30%;
+                            margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                            'Times New Roman', Times, serif ; font-size: 25px"><b>QUESTION IMAGE</b></label>
+            <input type="file" style="
+                        width: 500px; height: 40px;margin-left:30%;
+                            margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " accept="image/jpeg" #image
+                (change)="onImageUpload($event)" placeholder="Profile Image" ><br><br>
+                <div class="col" style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                    'Times New Roman', Times, serif ; font-size: 25px" > 
+                    <img *ngIf = "!display" src={{imageUrl}} style="width:100px;height:100px">
+                    <img *ngIf="display" src={{base64textString}} style="width:100px;height:100px;display: inline">
+                </div> 
+                <div class="col" style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                    'Times New Roman', Times, serif ; font-size: 25px" > 
+                    <p>Image must be in jpeg format</p>
+                </div> 
+        </div>
+    
+        
+
+
+
+
+         <div class="form-group">
+            <button  style="
+            width: 300px; height: 40px;margin-left:37%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "[disabled]="!form.valid"  type="submit"  class="btn btn-mg btn-block">SUBMIT</button>
+        </div>
+    </form>

@@ -1,0 +1,23 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+         
+        
+    <div class="form-group">
+       
+        <input style="
+        width: 1000px; height: 100px;margin-left:8%;
+        margin-right:8%;display:block;margin-top:0%;margin-bottom:0% " 
+        name="answers"   #answers="ngModel" [(ngModel)]="Form.answers"   placeholder="Type Your Answer....."  class="form-control" required>
+         </div>
+         <div class="validation-error" *ngIf ="answers.invalid && answers.touched ">
+                <p style="
+                width: 500px; height: 40px;margin-left:30%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "
+                     *ngIf="answers.errors.required">ANSWER IS REQUIRED</p>
+                 -->
+
+         </div><div class="form-group">
+                <button  style="
+                width: 300px; height: 40px;margin-left:37%;
+                    margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "[disabled]="!form.valid"  type="submit"  class="btn btn-mg btn-block">SUBMIT</button>
+            </div>
+        </form>

@@ -1,0 +1,111 @@
+<h1 class="display-4 text-center" style="animation: cubic-bezier(0.075, 0.82, 0.165, 1);
+text-align: center;background-color:whitesmoke"><b>REGISTER</b></h1><br>
+
+<li class="navbar-brand">
+    <a routerLink="/" routerLinkActive="active-link">HOME</a>
+</li><br>
+
+
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="form-group">
+        <label style="
+    width: 500px; height: 40px;margin-left:30%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', 
+        Times, serif ; font-size: 25px"><b>FULLNAME</b></label>
+
+
+        <input style="
+    width: 500px; height: 40px;margin-left:30%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " name="FullName" #FullName="ngModel"
+            [(ngModel)]="service.formData.FullName " class="form-control" required>
+        <div style="
+    width: 500px; height: 40px;margin-left:30%;
+        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " class="validation-error"
+            *ngIf="FullName.invalid && FullName.touched ">FULLNAME IS REQUIRED</div>
+    </div>
+
+    <div class="form-group">
+        <label
+            style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', Times, serif ; font-size: 25px"><b>EMAIL</b></label>
+        <input style="
+        width: 500px; height: 40px;margin-left:30%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " name="email" #email="ngModel"
+            [(ngModel)]="service.formData.email " class="form-control" required email>
+        <div class="validation-error" *ngIf="email.invalid && email.touched ">
+            <p style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="email.errors.email">EMAIL IS
+                INVALID</p>
+            <p style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="email.errors.required">EMAIL IS
+                REQUIRED</p>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label
+            style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 'Times New Roman', Times, serif ; font-size: 25px"><b>PASSWORD</b></label>
+        <input type="password" style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " [pattern]='pwdPattern' name="Password"
+            #Password="ngModel" [(ngModel)]="service.formData.Password" class="form-control" required>
+        <div class="validation-error" *ngIf="Password.invalid && Password.touched ">
+
+            <p style="
+                    width: 500px; height: 40px;margin-left:30%;
+                        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% "
+                *ngIf="Password.errors.required">PASSWORD IS REQUIRED</p>
+            <p style="
+                    width: 500px; height: 40px;margin-left:30%;
+                        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " *ngIf="Password.errors.pattern">
+                Password must contain 8 characters with atleast
+                1 special character , 1 uppercase character and 1 number </p>
+        </div>
+    </div>
+
+
+    
+
+    <div class="form-group">
+        <label style="
+                    width: 500px; height: 40px;margin-left:30%;
+                        margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                        'Times New Roman', Times, serif ; font-size: 25px"><b>PROFILE IMAGE</b></label>
+        <input type="file" style="
+                    width: 500px; height: 40px;margin-left:30%;
+                        margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " accept="image/jpeg" #image
+            (change)="onImageUpload($event)" placeholder="Profile Image" ><br><br>
+            <div class="col" style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                'Times New Roman', Times, serif ; font-size: 25px" > 
+                <img *ngIf = "!display" src={{imageUrl}} style="width:100px;height:100px">
+                <img *ngIf="display" src={{base64textString}} style="width:100px;height:100px;display: inline">
+            </div> 
+            <div class="col" style="
+            width: 500px; height: 40px;margin-left:30%;
+                margin-right:7%;display:block;margin-top:0%;margin-bottom:0%;font-family: 
+                'Times New Roman', Times, serif ; font-size: 25px" > 
+                <p>Image must be in jpeg format</p>
+            </div> 
+    </div>
+
+    
+
+
+
+    <div class="form-group">
+        <button style="
+        width: 300px; height: 40px;margin-left:37%;
+            margin-right:7%;display:block;margin-top:0%;margin-bottom:0% " [disabled]="!form.valid"
+            (submit)="onSubmit(form)" type="submit" class="btn btn-lg btn-block">REGISTER</button>
+    </div>
+
+
+</form>
